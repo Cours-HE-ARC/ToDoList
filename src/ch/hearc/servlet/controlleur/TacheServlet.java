@@ -21,8 +21,16 @@ public class TacheServlet extends HttpServlet{
 	TachesDao tachesDao = new TachesDao();
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter out = resp.getWriter();
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)  {
+		
+		PrintWriter out = null;
+		
+		try {
+			out = resp.getWriter();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		if(tachesDao.getAllTaches().isEmpty()) {
 			out.print("Aucune taches enregistrées");
@@ -31,7 +39,7 @@ public class TacheServlet extends HttpServlet{
 			out.print("<ul>");
 			
 			tachesDao.getAllTaches().forEach(tache -> {
-				out.print("<li>" + tache.getDescription() + ", due: " + tache.getDueDate() +"</li>");
+				//out.print("<li>" + tache.getDescription() + ", due: " + tache.getDueDate() +"</li>");
 			});
 			
 			out.print("</ul>");

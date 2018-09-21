@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@ page import="java.util.List" %>
+<%@ page import="ch.hearc.servlet.model.Tache" %>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +11,7 @@
 
 <div>
 	<center>
-		<h1>Liste des t√¢ches</h1>
+		<h1>Liste des t‚ches</h1>
 		
 		<form action="/ToDoList/taches" method="get">
 	  		<input type="submit" value="Afficher"/>
@@ -16,9 +19,23 @@
 	</center>
 </div>
 
+
+<ul>
+<% 
+	List<Tache> taches = (List<Tache>)request.getAttribute("liste_taches");
+
+	for(Tache tache: taches){
+%>
+			<li><%= tache.getDescription() + ", due: " + tache.getDueDate() %></li>
+<%	
+	}
+	
+%>
+
+</ul>
 <div>
 	<center>
-		<h1>Ajouter une t√¢che</h1>
+		<h1>Ajouter une t‚che</h1>
 		
 		<form action="/ToDoList/taches" method="post">
 			
@@ -29,7 +46,7 @@
 			<input id="due_date" name="due_date" type="text" /><br/>
 			
 		
-			<input type="submit" value="Sauver t√¢che"/>
+			<input type="submit" value="Sauver t‚che"/>
 		
 		</form>
 		
