@@ -51,11 +51,15 @@ public class TacheServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-PrintWriter out = resp.getWriter();
+		//PrintWriter out = resp.getWriter();
 		
-		out.print("ok - " + req.getParameter("description") + ", "  + req.getParameter("due_date"));
+		//out.print("ok - " + req.getParameter("description") + ", "  + req.getParameter("due_date"));
 		
 		tachesDao.saveTaches(new Tache(req.getParameter("description"), req.getParameter("due_date")));
+		
+		req.setAttribute("liste_taches", tachesDao.getAllTaches());
+		
+		req.getRequestDispatcher("index.jsp").forward(req, resp);
 		
 	}
 
