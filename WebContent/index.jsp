@@ -21,7 +21,7 @@
 </div>
  
 
-<div class="card">
+<div class="card" style="margin-left:20px">
 			
   <h3 class="card-header">Liste des tâches</h3>
   <div class="card-body">
@@ -31,7 +31,7 @@
 		
 			for(Tache tache: taches){
 		%>
-					<li><%= tache.getDescription() + ", due: " + tache.getDueDate() %></li>
+					<li><%= tache.getDescription() + ", échéance: " + tache.getDueDate() %></li>
 		<%	
 			}
 			
@@ -50,7 +50,7 @@
 			<label size="100" for="description">Description:</label>
 			<input id="description" name="description" type="text" /><br/>
 			
-			<label>Due date:</label>
+			<label>Echéance:</label>
 			<input id="due_date" name="due_date" type="text" /><br/>
 			
 		
@@ -61,8 +61,7 @@
   </div>
 
 </div>
-    	
-  </div>
+</div>
 
 
 
